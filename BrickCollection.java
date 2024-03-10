@@ -6,7 +6,7 @@ public class BrickCollection{
 
     private ArrayList<Brick> bricks;
     private int col = 10;
-    private int row = 3;
+    private int row = 4;
 
     public BrickCollection(int x, int y, int width, int height) {
         bricks = new ArrayList<Brick>();
@@ -16,7 +16,7 @@ public class BrickCollection{
     public void BrickAddons(){
         for( int i = 0; i < col; i++){
             for( int j = 0; j < row; j++){
-                bricks.add(new Brick(20+i*80, 70+j*45, 50, 20, Color.blue, 2));
+                bricks.add(new Brick(7+i*80, 70+j*45, 65, 25, Color.blue, 2));
             }
         }
     }

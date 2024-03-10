@@ -11,7 +11,9 @@ public class Game {
 	private int Lives = 3;
 	private int Score;
 	private String name;
-	private Score S;
+	private Scores S;
+	private HighScore hs;
+	private Latestrun ls;
 
 	Font largeFont = new Font("Arial", Font.BOLD, 20);
 	Font largerFont = new Font("Arial", Font.BOLD, 40);
@@ -47,7 +49,7 @@ public class Game {
 	//Boll details
 	Boll boll;
 	private int bollXpos = 400;
-	private int bollYpos = 200;
+	private int bollYpos = 400;
 	private int bollWidth = 20;
 	private int bollHeight = 20;
 
@@ -63,8 +65,10 @@ public class Game {
 	private BrickCollection brickCollecton;
 
 	
-	public Game(GameBoard board, Score S) {
+	public Game(GameBoard board, Scores S) {
 		this.S = S;
+		hs = new HighScore(name, Score);
+		ls = new Latestrun();
 		random = new Random();
 		sprites = new ArrayList<Sprite>();
 		boll = new Boll(bollXpos, bollYpos,bollWidth,bollHeight, Color.white);
@@ -86,7 +90,7 @@ public class Game {
 
 	
 	public void update(Keyboard keyboard) {
-		if(!pause){
+			if(!pause){
 		for(Sprite sp : sprites){
 			sp.update(keyboard);
 		}
@@ -97,8 +101,8 @@ public class Game {
 		brickCollision();
 		lostBall();
 		winBall();
-		}
 	}
+}
 //------------------------------------------------------------------------------------
 	public void batCollision(){
 		if(bat.collide().intersects(boll.collide())){
@@ -111,7 +115,7 @@ public class Game {
 			if(brickCollecton.get(i).collide().intersects(boll.collide())){
 				if(random.nextDouble()<0.5){
 					boll.bounce();
-					Score++;
+					Score ++;
 				}
 				if (brickCollecton.get(i).getlife() <=1 ) {
 					brickCollecton.removeBrick(i);
@@ -127,7 +131,7 @@ public class Game {
 		if(boll.getY()>=600){
 			Lives--;
 			if(Lives!=0){
-				boll = new Boll(400, 200, 20, 20, Color.white);
+				boll = new Boll(bollXpos, bollYpos, bollWidth, bollHeight, Color.white);
 			} else {
 				lose = true;
 				pause = true;
@@ -136,8 +140,7 @@ public class Game {
 			if(S.getName().length() > 3){
 				S.setName(S.getName().substring(0, 3));
 			}
-			S.getHS().getHighscore().addElement(S.getName()+": "+ Score);
-			S.getLS().getLastrun_model().addElement(Score);
+			ls.addLs(Score);
 		}
 			}
 		}
@@ -152,8 +155,7 @@ public class Game {
 			if(S.getName().length() > 3){
 				S.setName(S.getName().substring(0, 3));
 			}
-			S.getHS().getHighscore().addElement(S.getName()+": "+ Score);
-			S.getLS().getLastrun_model().addElement(Score);
+			ls.addLs(Score);
 		}
 	}
 //------------------------------------------------------------------------------------
@@ -185,9 +187,7 @@ public class Game {
 	public int getScore(){
 		return Score;
 	}
-	public int getLives(){
-		return Lives;
-	}
+
 	public String getName(){
 		return name;
 	}

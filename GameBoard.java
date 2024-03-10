@@ -6,11 +6,11 @@ public class GameBoard extends JComponent {
 	private final int FPS = 60; 
 	private Game game;
 	private Keyboard keyboard;
-	private Score S;
+	private Scores S;
 
 	public GameBoard() {
 		keyboard = new Keyboard();
-		S = new Score(this);
+		S = new Scores(this);
 		game = new Game(this, S);
 	}
 	
@@ -51,11 +51,11 @@ public class GameBoard extends JComponent {
 	public void Restart(Game game){
 		this.game = game;
 	}
-	public Score setScore(){
+	public Scores setScore(){
 		return S;
 	}
 
-	public void setScore(Score Ss){
+	public void setScore(Scores Ss){
 		this.S = Ss;
 	}
 }
