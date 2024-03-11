@@ -17,8 +17,8 @@ public class HighScore {
     public void addHs(int score, String name){
             highscore_model.addElement(name+ ": "+score);
             sortera(highscore_model);
-            if(highscore_model.size()>10){
-                highscore_model.remove(10);
+            if(highscore_model.size()>Const.ten){
+                highscore_model.remove(Const.ten);
             }
         }
 
@@ -37,8 +37,12 @@ public class HighScore {
         }
     });
     model.removeAllElements();
-    for(String s : tmp){
-        highscore_model.addElement(s);
+    int count = Math.min(tmp.size(), Const.ten);
+    for(int i = 0; i<count; i++){
+        model.addElement(tmp.get(i));
+    }
+    while(model.size()>10){
+        model.removeElementAt(model.size()-Const.ett);
     }
 }
 

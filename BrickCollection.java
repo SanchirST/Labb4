@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class BrickCollection{
 
     private ArrayList<Brick> bricks;
-    private int col = 10;
-    private int row = 4;
 
     public BrickCollection(int x, int y, int width, int height) {
         bricks = new ArrayList<Brick>();
@@ -14,9 +12,9 @@ public class BrickCollection{
         }
 
     public void BrickAddons(){
-        for( int i = 0; i < col; i++){
-            for( int j = 0; j < row; j++){
-                bricks.add(new Brick(7+i*80, 70+j*45, 65, 25, Color.blue, 2));
+        for( int i = Const.noll; i < Const.col; i++){
+            for( int j = Const.noll; j < Const.row; j++){
+                bricks.add(new Brick(Const.brickX+i*80, Const.brickY+j*45, Const.brickWIDTH, Const.brickHEIGHT, Color.blue, Const.life));
             }
         }
     }
@@ -34,7 +32,7 @@ public class BrickCollection{
     }
 
     public void removeBrick(int i) {
-        if (i >= 0 && i < bricks.size()) {
+        if (i >= Const.noll && i < bricks.size()) {
             bricks.remove(i);
         }
     }

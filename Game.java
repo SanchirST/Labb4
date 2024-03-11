@@ -44,21 +44,9 @@ public class Game {
 		return lose;
 	}
 
-	//Boll details
 	Boll boll;
-	private int bollXpos = 400;
-	private int bollYpos = 400;
-	private int bollWidth = 20;
-	private int bollHeight = 20;
-
-	//Player details
 	Bat bat;
-	private int playerXpos = 300;
-	private int playerYpos = 550;
-	private int playerWidth = 100;
-	private int playerHeight = 10;
 
-	//Bricks
 	private final ArrayList<Sprite> sprites;
 	private BrickCollection brickCollecton;
 
@@ -67,9 +55,9 @@ public class Game {
 		this.S = S;
 		random = new Random();
 		sprites = new ArrayList<Sprite>();
-		boll = new Boll(bollXpos, bollYpos,bollWidth,bollHeight, Color.white);
-		bat = new Bat(playerXpos, playerYpos, playerWidth, playerHeight, Color.red);
-		brickCollecton = new BrickCollection(0, 0, 0, 0);
+		boll = new Boll(Const.BollposX, Const.BollposY,Const.BollWidth,Const.BollHeight, Color.white);
+		bat = new Bat(Const.playerXpos, Const.playerYpos, Const.playerWidth, Const.playerHeight, Color.red);
+		brickCollecton = new BrickCollection(Const.noll,Const.noll,Const.noll,Const.noll);
 
 		Wall left = new Wall(0, 0, 5, 800, Color.gray);
 		Wall right = new Wall(795, 0, 5, 600, Color.gray);
@@ -107,13 +95,13 @@ public class Game {
 	}
 
 	public void brickCollision(){
-		for (int i = 0; i < brickCollecton.getSize(); i++) {
+		for (int i = Const.noll; i < brickCollecton.getSize(); i++) {
 			if(brickCollecton.get(i).collide().intersects(boll.collide())){
 				if(random.nextDouble()<0.5){
 					boll.bounce();
 					Score ++;
 				}
-				if (brickCollecton.get(i).getlife() <=1 ) {
+				if (brickCollecton.get(i).getlife() <=Const.ett ) {
 					brickCollecton.removeBrick(i);
                     boll.bounce();
 					Score ++;
@@ -124,30 +112,28 @@ public class Game {
 	}
 
 	public void lostBall(){
-		if(boll.getY()>=600){
+		if(boll.getY()>=Const.death){
 			Lives--;
-			if(Lives!=0){
-				boll = new Boll(bollXpos, bollYpos, bollWidth, bollHeight, Color.white);
+			if(Lives!=Const.noll){
+				boll = new Boll(Const.BollposX, Const.BollposY,Const.BollWidth,Const.BollHeight, Color.white);
 			} else {
 				lose = true;
 				pause = true;
-				if(Score>20){
-			while(name.length()!=3){
+			while(name.length()!=Const.max){
 				name = JOptionPane.showInputDialog("Enter your name(MAX 3)");
 			}
 			name = name.toUpperCase();
 			S.getHS().addHs(getScore(), name);
-		}
 			S.getLS().addLs(getScore());
 		}
 	}
 }
 	
 	public void winBall(){
-		if (brickCollecton.getSize() == 0){
+		if (brickCollecton.getSize() == Const.noll){
 			win = true;
 			pause = true;
-			while(name.length()!=3){
+			while(name.length()!=Const.max){
 				name = JOptionPane.showInputDialog("Enter your name MAX 3");
 			}
 			name = name.toUpperCase();

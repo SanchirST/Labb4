@@ -14,7 +14,7 @@ public class Brick extends Sprite{
 
     @Override
     public void update(Keyboard keyboard) {
-        if(life == 1){
+        if(life == Const.lastlife){
             color = Color.green;
         }
     }

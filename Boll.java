@@ -7,8 +7,6 @@ public class Boll extends Sprite{
     private Color color;
     private float BallX = 2; 
     private float BallY = 3;
-    private int Lives = 3;
-
     private int unitX = 1;
     private int unitY = 1;
 
@@ -39,10 +37,10 @@ public class Boll extends Sprite{
             setX((int)(getX()+BallX*unitX));
             setY((int)(getY()+BallY*unitY));
             
-            if(getX() <= 5 || getX()>= 775){
+            if(getX() <= Const.leftWALL || getX()>= Const.rightWALL){
                 BallX = -BallX;
             }
-            if(getY() <= 55){
+            if(getY() <= Const.topWALL){
                 BallY = -BallY;
             }
         }
@@ -77,8 +75,4 @@ public class Boll extends Sprite{
     public void bounce(){
         BallY = -BallY;
     }
-    
-    public int getLives(){
-		return Lives;
-	}
 }

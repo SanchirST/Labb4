@@ -15,14 +15,14 @@ public class Bat extends Sprite{
     public void update(Keyboard keyboard) {
 
         if(keyboard.isKeyDown(Key.Left)){
-            if(getX()>=10){
-                setX(getX()-7);
+            if(getX()>=Const.playerRIGHT){
+                setX(getX()-Const.playerSPEED);
             }
         }
 
         if(keyboard.isKeyDown(Key.Right)){
-            if(getX()<=690){
-                setX(getX()+7);
+            if(getX()<=Const.playerLEFT){
+                setX(getX()+Const.playerSPEED);
             }
         }
     }
@@ -32,7 +32,7 @@ public class Bat extends Sprite{
         graphics.setColor(color);
         graphics.fillRect(getX(), getY(), getWidth(), getHeight());
         graphics.setColor(Color.white);
-        graphics.drawString("ST", getX()+45, getY()+10);
+        graphics.drawString("ST", getX()+Const.playerNAMEposX, getY()+Const.playerNAMEposY);
     }
 
     public Rectangle collide(){
