@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
@@ -25,7 +27,15 @@ public class HighScore {
     for (int i = 0; i < model.size(); i++) {
         tmp.add(model.getElementAt(i));
     }
-    Collections.sort(tmp, Collections.reverseOrder());
+    Collections.sort(tmp, new Comparator<String>() {
+        public int compare(String s1, String s2){
+                return extractInt(s2)-extractInt(s1);
+        }
+        int extractInt(String s){
+            String num = s.replaceAll("\\D", "");
+            return num.isEmpty() ? 0: Integer.parseInt(num);
+        }
+    });
     model.removeAllElements();
     for(String s : tmp){
         highscore_model.addElement(s);

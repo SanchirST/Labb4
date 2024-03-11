@@ -131,11 +131,13 @@ public class Game {
 			} else {
 				lose = true;
 				pause = true;
+				if(Score>20){
 			while(name.length()!=3){
 				name = JOptionPane.showInputDialog("Enter your name(MAX 3)");
 			}
 			name = name.toUpperCase();
 			S.getHS().addHs(getScore(), name);
+		}
 			S.getLS().addLs(getScore());
 		}
 	}
