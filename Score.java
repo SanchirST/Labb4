@@ -56,20 +56,11 @@ public class Score extends JFrame implements ActionListener{
                 board.Restart( new Game(board, this));
             }
         }
-        
+
         public Latestrun getLS(){
             return LS;
         }
-
-        public void setLS(Latestrun LSs){
-            LS = LSs;
-        }
-
         public HighScore getHS(){
             return HS;
-        }
-
-        public void setHS(HighScore HSs){
-            HS = HSs;
         }
 }

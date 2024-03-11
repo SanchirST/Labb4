@@ -59,11 +59,11 @@ public class Game {
 		bat = new Bat(Const.playerXpos, Const.playerYpos, Const.playerWidth, Const.playerHeight, Color.red);
 		brickCollecton = new BrickCollection(Const.noll,Const.noll,Const.noll,Const.noll);
 
-		Wall left = new Wall(0, 0, 5, 800, Color.gray);
-		Wall right = new Wall(795, 0, 5, 600, Color.gray);
-		Wall top = new Wall(0, 50, 800, 5, Color.gray);
-		Wall ex1 = new Wall(700, 15, 40, 20, Color.blue);
-		Wall ex2 = new Wall( 600, 15, 40, 20, Color.green);
+		Wall left = new Wall(Const.wallNoll, Const.wallNoll, Const.wallFive, Const.wallX, Color.gray);
+		Wall right = new Wall(Const.wallX-Const.wallFive, Const.wallNoll, Const.wallFive, Const.wallY, Color.gray);
+		Wall top = new Wall(Const.wallNoll, Const.wallty, Const.wallX, Const.wallFive, Color.gray);
+		Wall ex1 = new Wall(Const.exX, Const.exY, Const.exWIDTH, Const.exHEIGHT, Color.blue);
+		Wall ex2 = new Wall( Const.ex2X, Const.exY, Const.exWIDTH, Const.exHEIGHT, Color.green);
 
 		sprites.add(left);
 		sprites.add(right);
@@ -170,11 +170,6 @@ public class Game {
 	public int getScore(){
 		return Score;
 	}
-
-	public void setScore(int Score){
-		this.Score = Score;
-	}
-
 	public String getName(){
 		return name;
 	}

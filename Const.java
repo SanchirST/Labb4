@@ -41,4 +41,19 @@ public class Const {
     public static final int sizeWIDTH = 600;
     public static final int sizeLOCAX = 800;
     public static final int sizeLOCAY = 0;
+
+    //Wall details
+    public static final int wallNoll = 0;
+    public static final int wallFive = 5;
+    public static final int wallX = 800;
+    public static final int wallY = 600;
+    public static final int wallty = 50;
+
+    //Ex details
+    public static final int exX= 700;
+    public static final int exY= 15;
+    public static final int ex2X= 600;
+    public static final int exWIDTH= 40;
+    public static final int exHEIGHT= 20;
+
 }

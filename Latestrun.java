@@ -20,13 +20,7 @@ public class Latestrun {
     public DefaultListModel<Integer> getLastrun_model(){
         return lastrun_model;
     }
-    public void setLastrun_model(DefaultListModel<Integer> lastrun_model){
-        this.lastrun_model = lastrun_model;
-    }
     public JList<Integer> getLastrun(){
         return lastrun;
-    }
-    public void setLastrun(JList<Integer> lastrun){
-        this.lastrun = lastrun;
     }
 }

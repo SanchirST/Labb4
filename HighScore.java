@@ -49,13 +49,7 @@ public class HighScore {
 public DefaultListModel<String> getHigh_score_model() {
 	return highscore_model;
 }
-public void setHigh_score_model(DefaultListModel<String> highscore_model) {
-	this.highscore_model = highscore_model;
-}
 public JList<String> getHighscore_list() {
 	return highscore_list;
-}
-public void setHigh_score_list(JList<String> highscore_list) {
-	this.highscore_list = highscore_list;
 }
 }
