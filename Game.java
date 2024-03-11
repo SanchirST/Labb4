@@ -10,10 +10,8 @@ public class Game {
 	//Game details
 	private int Lives = 3;
 	private int Score;
-	private String name;
-	private Scores S;
-	private HighScore hs;
-	private Latestrun ls;
+	private String name = "";
+	private Score S;
 
 	Font largeFont = new Font("Arial", Font.BOLD, 20);
 	Font largerFont = new Font("Arial", Font.BOLD, 40);
@@ -65,10 +63,8 @@ public class Game {
 	private BrickCollection brickCollecton;
 
 	
-	public Game(GameBoard board, Scores S) {
+	public Game(GameBoard board, Score S) {
 		this.S = S;
-		hs = new HighScore(name, Score);
-		ls = new Latestrun();
 		random = new Random();
 		sprites = new ArrayList<Sprite>();
 		boll = new Boll(bollXpos, bollYpos,bollWidth,bollHeight, Color.white);
@@ -135,27 +131,26 @@ public class Game {
 			} else {
 				lose = true;
 				pause = true;
-			S.setName(JOptionPane.showInputDialog("Enter your name"));
-			S.setName(S.getName().toUpperCase());
-			if(S.getName().length() > 3){
-				S.setName(S.getName().substring(0, 3));
+			while(name.length()!=3){
+				name = JOptionPane.showInputDialog("Enter your name(MAX 3)");
 			}
-			ls.addLs(Score);
+			name = name.toUpperCase();
+			S.getHS().addHs(getScore(), name);
+			S.getLS().addLs(getScore());
 		}
-			}
-		}
+	}
+}
 	
 	public void winBall(){
 		if (brickCollecton.getSize() == 0){
 			win = true;
 			pause = true;
-
-			S.setName(JOptionPane.showInputDialog("Enter your name"));
-			S.setName(S.getName().toUpperCase());
-			if(S.getName().length() > 3){
-				S.setName(S.getName().substring(0, 3));
+			while(name.length()!=3){
+				name = JOptionPane.showInputDialog("Enter your name MAX 3");
 			}
-			ls.addLs(Score);
+			name = name.toUpperCase();
+			S.getHS().addHs(getScore(), name);
+			S.getLS().addLs(getScore());
 		}
 	}
 //------------------------------------------------------------------------------------
@@ -188,6 +183,10 @@ public class Game {
 		return Score;
 	}
 
+	public void setScore(int Score){
+		this.Score = Score;
+	}
+
 	public String getName(){
 		return name;
 	}
@@ -195,4 +194,5 @@ public class Game {
 	public void setName(String name){
 		this.name = name;
 	}
+
 }
